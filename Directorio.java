@@ -40,19 +40,22 @@ public class Directorio {
         contactos[na++] = contacto;
     }
 
-    public Contacto buscarContacto(String nombre) {
-        if (!estaVacio() && contiene(nombre))
-            for (Contacto contacto : contactos) {
-                if (contacto.getNombre().equals(nombre)) // Si nombre coincide
-                    return contacto;
-                break;
+    public String buscarContacto(String nombre) {
+        String contacto = "";
+        if (!estaVacio() && contieneN(nombre))
+            for (int i = 0; i < na; i++) {
+                if (contactos[i].getNombre().equals(nombre)) { // Si nombre coincide
+                    contacto += contactos[i].toString();
+                    break;
+                }
             }
-        else
-            return null;
+        if (contacto.equals(""))
+            contacto += "No tienes ningun contacto con ese nombre";
+        return contacto;
     }
 
     public Contacto bucarCategoria(String nombre, String categoria) {
-        if (!estaVacio() && contiene(nombre))
+        if (!estaVacio() && contieneN(nombre))
             for (Contacto contacto : contactos) {
                 if (categoria.equals("amigo")) {
                     if (contacto.getNombre().equals(nombre) && contacto instanceof Amigo) // Si nombre coincide y es
@@ -75,7 +78,43 @@ public class Directorio {
             return null;
     }
 
-    private boolean contiene(String nombre) {
+    public String mostrarCorreo(String correo) {// Nombre definitivo pendiente
+        String contacto = "";
+        if (!estaVacio() && contieneC(correo)) {
+            for (int i = 0; i < na; i++) {
+                if (contactos[i] instanceof Amigo) {
+                    contacto += ((Amigo) contactos[i]).toString();
+                    break;
+                }
+                if (contactos[i] instanceof Cliente) {
+                    contacto += ((Cliente) contactos[i]).toString();
+                    break;
+                }
+            }
+        }
+        return contacto;
+    }
+
+    public String mostrarContactosC() {
+        String amigos = "";
+        String clientes = "";
+        if (!estaVacio())
+            for (int i = 0; i < na; i++) {
+                if (contactos[i] instanceof Amigo) {
+                    amigos += ((Amigo) contactos[i]).toString() + "\n**************\n";
+                }
+                if (contactos[i] instanceof Cliente) {
+                    clientes += ((Cliente) contactos[i]).toString() + "\n**************\n";
+                }
+            }
+        if (amigos.equals(""))
+            amigos += "No hay amigos que mostrar :'(";
+        if (clientes.equals(""))
+            clientes += "No hay clientes que mostrar";
+        return "AMIGOS\n\n" + amigos + "CLIENTES\n\n" + clientes;
+    }
+
+    private boolean contieneN(String nombre) {
         boolean respuesta = false;
         if (!estaVacio()) // Si hay Contactos almacenados
             for (int i = 0; i < na; i++) // Buscamos el Contactos
@@ -83,6 +122,18 @@ public class Directorio {
                     respuesta = true;
                     break;
                 }
+        return respuesta;
+    }
+
+    public boolean contieneC(String correo) {
+        boolean respuesta = false;
+        if (!estaVacio()) // Si hay Contactos almacenados
+            for (int i = 0; i < na; i++) // Buscamos el Contactos
+                if (contactos[i] instanceof ContactoCC)
+                    if (correo.equals(((ContactoCC) contactos[i]).getCorreo())) { // Lo encontro
+                        respuesta = true;
+                        break;
+                    }
         return respuesta;
     }
 
@@ -94,5 +145,17 @@ public class Directorio {
         }
         // Actualizar el arreglo orginal, sustituyendolo por el nuevo
         contactos = conts;
+    }
+
+    private <T> T[] ordenarAsc(T contactos[], java.util.Comparator<T> cmp) {
+        T orden[] = contactos;
+        for (int i = 0; i < orden.length; i++)
+            for (int j = i + 1; j < orden.length; j++)
+                if (cmp.compare(contactos[i], contactos[j]) > 0) { // Los datos estan desordenados
+                    T temp = orden[i]; // por tanto los intercambia
+                    orden[i] = orden[j];
+                    orden[j] = temp;
+                }
+        return orden;
     }
 }
