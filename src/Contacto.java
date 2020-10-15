@@ -15,7 +15,7 @@ public class Contacto {
      /**
    * Constructor que recibe parámetros
    * @param nombre El nombre del Contacto
-   * @param telefono El telefono del Contacto
+   * @param telefono El telefono casa del Contacto
       */
     public Contacto(String nombre, int telefono) {
         this.nombre = nombre;
@@ -31,7 +31,7 @@ public class Contacto {
     }
     
     /**
-   * Método para obtener el telefono del Contacto
+   * Método para obtener el telefono casa del Contacto
    * @return int El telefono del Contacto
    */
     public int getTelefono() {
@@ -45,7 +45,7 @@ public class Contacto {
         this.nombre = nombre;
     }
 /**
-   * Método para establecer el telefono del Contacto
+   * Método para establecer el telefono casa del Contacto
    * @param telefono El telefono del Contacto
    */
     public void setTelefono(int telefono) {
