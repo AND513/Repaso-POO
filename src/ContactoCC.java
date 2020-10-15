@@ -16,7 +16,7 @@ public class ContactoCC extends Contacto {
      * Constructor que recibe parametros
      *
      * @param nombre   El nombre del Contacto
-     * @param telefono El telefono del Contacto
+     * @param telefono El telefono casa del Contacto
      * @param celular  El celular del Contacto
      * @param correo   El correo del Contacto
      */
