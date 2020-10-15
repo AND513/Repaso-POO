@@ -1,10 +1,12 @@
 /**
- * Clase para definir un Contacto
- *
- * @author Cruz Barrios Luis Alberto, Flores Molina Alfredo, Fernandez Neria
- *         Montserrat, Maya Sanchez Andrea Fernanda, Ortiz Covarrubias Andres
- *         Uriel, Lopez Espindola Luis Enrique
- * @version Septiembre 2020
+ * Clase
+ * @author Cruz Barrios Luis Alberto
+ * @author Flores Molina Alfredo
+ * @author Fernandez Neria Montserrat
+ * @author Maya Sanchez Andrea Fernanda 
+ * @author Ortiz Covarrubias Andres Uriel
+ * @author Lopez Espindola Luis Enrique
+ * @version
  */
 public class ContactoCC extends Contacto {
     private int celular;
