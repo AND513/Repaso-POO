@@ -17,14 +17,14 @@ public class Amigo extends ContactoCC {
     /**
      * Constructor que recibe parametros
      *
-     * @param nombre   El nombre del Amigo
-     * @param telefono El telefono casa del Amigo 
-     * @param celular  El celular del Amigo
-     * @param correo   El correo del Amigo
-     * @param apodo   El apodo del Amigo
-     * @param cumpleanios El cumpleanios del Amigo
-     * @param facebook El facebook del Amigo
-     * @param twitter  El twitter del Amigo
+     * @param nombre   El nombre del contacto Amigo
+     * @param telefono El telefono casa del contacto Amigo 
+     * @param celular  El celular del contacto Amigo
+     * @param correo   El correo del contacto Amigo
+     * @param apodo   El apodo del contacto Amigo
+     * @param cumpleanios El cumpleanios del contacto Amigo
+     * @param facebook El facebook del contacto Amigo
+     * @param twitter  El twitter del contacto Amigo
      */
     public Amigo(String nombre, int telefono, int celular, String correo, String apodo, String cumpleanios,
             String facebook, String twitter) {
